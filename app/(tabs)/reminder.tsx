@@ -1,9 +1,8 @@
-import { Screen } from "@/components/Screen";
-import TextArea from "@/components/ui/Text";
+import { TextArea, VStack, Screen } from "@/components/ui";
 import { COLORS } from "@/theme/colors";
 import { Icon } from "@roninoss/icons";
 import { FlashList } from "@shopify/flash-list";
-import { View, Text } from "react-native";
+import { View, Image, Platform } from "react-native";
 
 export default function ReminderScreen() {
   const notifications = [
@@ -32,7 +31,7 @@ export default function ReminderScreen() {
 
   return (
     <Screen>
-      <TextArea size="largeTitle" fontWeight="bold">
+      <TextArea size="largeTitle" style={{ fontWeight: "bold" }}>
         Notifications
       </TextArea>
       <View
@@ -62,19 +61,15 @@ export default function ReminderScreen() {
               }}
             >
               <Icon name="bell" color={COLORS.light.grey} size={28} />
-              <View
-                style={{
-                  gap: 4,
-                }}
-              >
-                <TextArea fontWeight="medium">{item.title}</TextArea>
+              <VStack gap={4}>
+                <TextArea size="body">{item.title}</TextArea>
                 <TextArea color="secondary" size="text">
                   {item.body}
                 </TextArea>
                 <TextArea size="text">
                   {item.auctionDate.toDateString()}
                 </TextArea>
-              </View>
+              </VStack>
               <View
                 style={{
                   backgroundColor: COLORS.light.grey5,
@@ -82,8 +77,8 @@ export default function ReminderScreen() {
                   borderRadius: 4,
                 }}
               >
-                <TextArea fontWeight="medium" size="heading">
-                  {item.auctionDate.getDate()}
+                <TextArea size="heading">
+                  {item.auctionDate.getDate().toString()}
                 </TextArea>
               </View>
             </View>
@@ -91,7 +86,18 @@ export default function ReminderScreen() {
         }}
         data={notifications}
       />
-      ;
+
+      <Image
+        source={require("@/assets/images/reminders.png")}
+        style={{
+          height: 250,
+          width: "100%",
+          aspectRatio: 1,
+          resizeMode: "contain",
+          alignSelf: "center",
+          marginBottom: 120,
+        }}
+      />
     </Screen>
   );
 }

@@ -1,31 +1,45 @@
-import { Image, StyleSheet, Platform } from "react-native";
+import { Image, StyleSheet } from "react-native";
 
-import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { Icon } from "@roninoss/icons";
 import { COLORS } from "@/theme/colors";
-import TextArea from "@/components/ui/Text";
+import { Screen, TextArea } from "@/components/ui";
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{
-        light: COLORS.light.background,
-        dark: "#1D3D47",
+    // <ParallaxScrollView
+    //   headerBackgroundColor={{
+    //     light: COLORS.light.background,
+    //     dark: "#1D3D47",
+    //   }}
+    //   headerImage={
+    //     <Image
+    //       source={require("@/assets/images/partial-react-logo.png")}
+    //       style={styles.reactLogo}
+    //     />
+    //   }
+    // >
+    <Screen
+      style={{
+        padding: 20,
+        alignItems: "center",
+        justifyContent: "space-between",
       }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
     >
-      <TextArea fontWeight="medium" size="heading">
-        Upcoming Auctions
+      <TextArea size="largeTitle" style={{ fontWeight: "bold" }}>
+        Auctions
       </TextArea>
-    </ParallaxScrollView>
+      <Image
+        source={require("@/assets/images/things.png")}
+        style={{
+          height: 280,
+          aspectRatio: 1,
+          resizeMode: "contain",
+          alignSelf: "center",
+          marginBottom: 260,
+        }}
+      />
+    </Screen>
+    // </ParallaxScrollView>
   );
 }
 

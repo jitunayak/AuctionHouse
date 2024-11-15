@@ -1,7 +1,7 @@
 import { COLORS } from "@/theme/colors";
-import { Text } from "react-native";
+import { Text, TextProps } from "react-native";
 
-const size = {
+const sizes = {
   largeTitle: 34,
   title: 28,
   heading: 22,
@@ -9,16 +9,7 @@ const size = {
   text: 14,
 };
 
-const fontWeight = {
-  bold: "700",
-  medium: "600",
-  regular: "500",
-  light: "400",
-  thin: "300",
-  black: "800",
-};
-
-const color = {
+const colors = {
   primary: COLORS.black,
   secondary: COLORS.light.grey,
   accent: COLORS.light.primary,
@@ -26,21 +17,20 @@ const color = {
   black: COLORS.light.foreground,
 };
 type Props = {
-  size?: keyof typeof size;
-  fontWeight?: keyof typeof fontWeight;
-  color?: keyof typeof color;
-  children: React.ReactNode;
+  size?: keyof typeof sizes;
+  color?: keyof typeof colors;
 };
-export default function TextArea(props: Props) {
+export const TextArea = (props: Props & TextProps) => {
+  const { size, color, children, ...rest } = props;
   return (
     <Text
+      {...rest}
       style={{
-        fontSize: size[props.size ?? "body"],
-        fontWeight: props.fontWeight === "bold" ? "bold" : props.fontWeight,
-        color: props.color ?? color.primary,
+        fontSize: sizes[(props.size as keyof typeof size) ?? sizes.body],
+        color: colors[(props.color as keyof typeof color) ?? colors.primary],
       }}
     >
       {props.children}
     </Text>
   );
-}
+};

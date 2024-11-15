@@ -1,5 +1,5 @@
-import { View } from "react-native";
-import Text from "./../../components/ui/Text";
+import { TextArea } from "@/components/ui";
+import { View, Image } from "react-native";
 
 export default function SettingsScreen() {
   return (
@@ -12,9 +12,18 @@ export default function SettingsScreen() {
         alignItems: "flex-start",
       }}
     >
-      <Text size="largeTitle" fontWeight="bold">
-        Settings
-      </Text>
+      <TextArea size="largeTitle">Settings</TextArea>
+
+      <Image
+        source={require("@/assets/images/today.png")}
+        style={{
+          height: 280,
+          aspectRatio: 1,
+          resizeMode: "contain",
+          alignSelf: "center",
+          marginTop: 200,
+        }}
+      />
     </View>
   );
 }
