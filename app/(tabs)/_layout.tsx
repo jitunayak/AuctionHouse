@@ -66,9 +66,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="things"
+        name="reminder"
         options={{
-          title: "Reminder",
+          title: "Notifications",
           tabBarIcon: ({ focused }) => (
             <Icon
               size={28}

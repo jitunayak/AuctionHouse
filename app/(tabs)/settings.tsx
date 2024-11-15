@@ -6,7 +6,7 @@ export default function SettingsScreen() {
     <View
       style={{
         flex: 1,
-        marginTop: 50,
+        marginTop: 40,
         padding: 20,
         justifyContent: "flex-start",
         alignItems: "flex-start",
