@@ -19,15 +19,17 @@ const colors = {
 type Props = {
   size?: keyof typeof sizes;
   color?: keyof typeof colors;
+  style?: TextProps["style"];
 };
 export const TextArea = (props: Props & TextProps) => {
-  const { size, color, children, ...rest } = props;
+  const { size, color, children, style, ...rest } = props;
   return (
     <Text
       {...rest}
       style={{
         fontSize: sizes[(props.size as keyof typeof size) ?? sizes.body],
         color: colors[(props.color as keyof typeof color) ?? colors.primary],
+        ...(style as object),
       }}
     >
       {props.children}

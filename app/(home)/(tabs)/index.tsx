@@ -1,23 +1,12 @@
-import { Image, StyleSheet } from "react-native";
+import { Button, Image, StyleSheet } from "react-native";
 
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { COLORS } from "@/theme/colors";
 import { Screen, TextArea } from "@/components/ui";
+import { SignedIn, SignedOut, useOAuth, useUser } from "@clerk/clerk-expo";
 
 export default function HomeScreen() {
   return (
-    // <ParallaxScrollView
-    //   headerBackgroundColor={{
-    //     light: COLORS.light.background,
-    //     dark: "#1D3D47",
-    //   }}
-    //   headerImage={
-    //     <Image
-    //       source={require("@/assets/images/partial-react-logo.png")}
-    //       style={styles.reactLogo}
-    //     />
-    //   }
-    // >
     <Screen
       style={{
         padding: 20,
@@ -39,7 +28,6 @@ export default function HomeScreen() {
         }}
       />
     </Screen>
-    // </ParallaxScrollView>
   );
 }
 

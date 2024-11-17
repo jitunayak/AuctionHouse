@@ -1,7 +1,20 @@
 import { TextArea } from "@/components/ui";
-import { View, Image } from "react-native";
+import { useAuth, useUser } from "@clerk/clerk-expo";
+import { useRouter } from "expo-router";
+import { useEffect } from "react";
+import { View, Image, Button } from "react-native";
 
 export default function SettingsScreen() {
+  const { signOut } = useAuth();
+  const router = useRouter();
+  const { isSignedIn } = useUser();
+  useEffect(() => {
+    if (!isSignedIn) {
+      console.log("Sign in to see this screen");
+      router.replace("/(tabs)");
+    }
+  }, [isSignedIn]);
+
   return (
     <View
       style={{
@@ -24,6 +37,7 @@ export default function SettingsScreen() {
           marginTop: 200,
         }}
       />
+      <Button title="Sign Out" onPress={() => signOut()} />
     </View>
   );
 }
